@@ -7,8 +7,5 @@
     "git": "https://github.com/bamapookie/serverless-pseudo-parameters-lite"
   },
   "main": "lib/index.js",
-  "dependencies": {
-    "lodash": "^4.13.1",
-    "chalk": "^1.1.1"
-  }
+  "dependencies": {}
 }
