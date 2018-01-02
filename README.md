@@ -7,13 +7,15 @@ This plugin fixes that.
 
 You can now use `#{AWS::AccountId}`, `#{AWS::Region}`, etc. in any of your config strings, and this plugin replaces those values with the proper pseudo parameter `Fn::Sub` CloudFormation function.
 
+Note: This is a refactored implementation of the very fine [Serverless Pseudo Parameters](https://github.com/svdgraaf/serverless-pseudo-parameters) plugin by [Sander van de Graaf](https://github.com/svdgraaf) that inlines and removes all npm dependencies.
+
 Installation
 -----
-Install the package with npm: `npm install serverless-pseudo-parameters`, and add it to your `serverless.yml` plugins list:
+Install the package with npm: `npm install serverless-pseudo-parameters-lite`, and add it to your `serverless.yml` plugins list:
 
 ```yaml
 plugins:
-  - serverless-pseudo-parameters
+  - '@bamapookie/serverless-pseudo-parameters-lite'
 ```
 
 Usage
@@ -26,7 +28,7 @@ For example, this configuration will create a bucket with your account id append
 service: users-bucket-thingy
 
 plugins:
-  - serverless-pseudo-parameters
+  - '@bamapookie/serverless-pseudo-parameters-lite'
 
 functions:
   users:
@@ -40,11 +42,13 @@ functions:
 The output in the cloudformation template will look something like this:
 
 ```json
-"Type": "AWS::S3::Bucket",
-"Properties": {
-  "BucketName": {
-    "Fn::Sub": "photos-${AWS::AccountId}"
-  },
+{
+  "Type": "AWS::S3::Bucket",
+  "Properties": {
+    "BucketName": {
+      "Fn::Sub": "photos-${AWS::AccountId}"
+    }
+  }
 }
 ```
 
@@ -54,7 +58,7 @@ Or use it to generate Arn's, for example for [Step Functions](https://www.npmjs.
 service: foobar-handler
 
 plugins:
-  - serverless-pseudo-parameters
+  - '@bamapookie/serverless-pseudo-parameters-lite'
 
 functions:
   foobar-baz:

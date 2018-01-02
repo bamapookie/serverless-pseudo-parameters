@@ -1,10 +1,10 @@
 {
-  "name": "serverless-pseudo-parameters",
-  "version": "1.1.6",
+  "name": "@bamapookie/serverless-pseudo-parameters-lite",
+  "version": "0.0.3",
   "devDependencies": {},
   "license": "MIT",
   "repository": {
-    "git": "https://github.com/svdgraaf/serverless-pseudo-parameters"
+    "git": "https://github.com/bamapookie/serverless-pseudo-parameters-lite"
   },
   "main": "lib/index.js",
   "dependencies": {
